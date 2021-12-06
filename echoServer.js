@@ -5,8 +5,8 @@ const port = 4444
 io.on('connection', (socket) => {
     console.log('connected')
     socket.on('message', (evt) => {
-        if(evt.cmd.startsWith('echo'))
-            socket.emit('message', evt.cmd.split(' ').pop())
+        if (evt.cmd.startsWith('echo'))
+            socket.emit('message', evt.cmd.split(' ').splice(1).join(' '))
         else if (evt.cmd.startsWith('quit')) {
             socket.emit('teste')
             socket.disconnect()
